@@ -1,0 +1,100 @@
+<!doctype html>
+<html>
+
+<head>
+    <title>Problem pakovanja ranca</title>
+    <script src="Chart.bundle.js"></script>
+    <script src="utils.js"></script>
+    <style>
+        canvas {
+            -moz-user-select: none;
+            -webkit-user-select: none;
+            -ms-user-select: none;
+        }
+    </style>
+
+    <link rel="stylesheet" type="text/css" href="style.css"/>
+</head>
+
+<body>
+<div style="width:75%;">
+    <canvas id="canvas"></canvas>
+</div>
+<br>
+<br>
+<script>
+    var config = {
+        type: 'line',
+        data: {
+            labels: [1, 5, 6, 8, 9, 10, 13, 15, 19, 23, 24, 25, 26, 27, 29, 30, 31, 33, 34, 35, 36, 37, 38, 40, 45, 48, 50, 51, 54, 56, 58, 65, 68, 70, 72, 73, 74, 76, 77, 83, 91, 95, 97, 103, 131, 138, 161, 164, 183, 185, 203, 204, 235, 266, 425, 473, 478, 659],
+            datasets: [{
+                label: 'Najbolje resenje do sada',
+                backgroundColor: window.chartColors.red,
+                borderColor: window.chartColors.red,
+                data: [674.4666666666667, 688.8510638297872, 719.6220472440945, 730.7539682539683, 736.88, 812.0149253731344, 813.8550724637681, 847.3233082706766, 858.9473684210526, 859.9349593495934, 870.0419580419581, 886.5671641791045, 890.1788617886178, 902.0540540540541, 908.8347826086956, 921.0307692307692, 928.3150684931506, 943.2, 944.6524822695036, 956.5972222222222, 960.1119402985074, 964.6527777777778, 970.4266666666666, 977.7297297297297, 984.3418803418804, 997.6744186046511, 997.8819444444445, 1010.3211678832117, 1016.7615384615384, 1016.917808219178, 1019.7533333333333, 1024.4779411764705, 1027.1328671328672, 1027.9455782312925, 1032.192, 1033.276595744681, 1035.9527027027027, 1041.281690140845, 1043.2957746478874, 1051.25, 1052.9733333333334, 1053.98, 1054.9866666666667, 1062.1283783783783, 1065.4507042253522, 1066.7867647058824, 1067.0666666666666, 1068.0733333333333, 1069.2739726027398, 1070.2808219178082, 1070.9328358208954, 1073.4027777777778, 1073.5602836879432, 1076.3724137931035, 1076.4755244755245, 1077.2789115646258, 1077.3287671232877, 1077.3793103448277],
+                fill: false,
+            },
+
+            ]
+        },
+        options: {
+            responsive: true,
+            title: {
+                display: true,
+                text: 'Problem pakovanja ranca'
+            },
+            tooltips: {
+                mode: 'index',
+                intersect: false,
+            },
+            hover: {
+                mode: 'nearest',
+                intersect: true
+            },
+            scales: {
+                xAxes: [{
+                    display: true,
+                    scaleLabel: {
+                        display: true,
+                        labelString: 'broj iteracije'
+                    }
+                }],
+                yAxes: [{
+                    display: true,
+                    scaleLabel: {
+                        display: true,
+                        labelString: 'Fitness'
+                    }
+                }]
+            }
+        }
+    };
+
+    window.onload = function () {
+        var ctx = document.getElementById('canvas').getContext('2d');
+        window.myLine = new Chart(ctx, config);
+    };
+
+</script>
+
+<div id="parametri">
+    <p>
+        Velicina populacije: 100
+    </p>
+    <p>
+        Maksimalna tezina ranca: 150
+    </p>
+    <p>
+        Verovatnoca za mutaciju: 0.05
+    </p>
+    <p>
+        Maksimalan broj iteracija bez napretka: 2000
+    </p>
+    <p>
+        Najbolje resenje: value: 1070, weight: 145, [842, 668, 88, 378, 321, 102, 354, 80, 87, 947, 648] - fitness = 1077.3793103448277
+    </p>
+</div>
+
+</body>
+
+</html>
